@@ -70,3 +70,46 @@ function whatIsInAName(collection, source){
     return arr;
 }
 ```
+
+####3. Bonfire: Pig Latin
+####### mySolution:
+```JavaScript
+function translatePigLatin(str) {
+    var newStr = "";
+    var position = str.search(/[aeiou]/);
+    //search for the first vowel and return its position
+    if (str[0] === "a" || str[0] === "e" || str[0] === "i" || str[0] === "o" || str[0] === "u") {
+        newStr = str + "way";
+    }
+    else {
+        var head = str.substring(0, position);
+        //chop of whatever preceding the vowel
+        var body = str.slice(position);
+        //keep the rest after head is being chopped off
+        newStr = body + head + "ay";
+    }
+    return newStr;
+}
+translatePigLatin("glove");
+```
+
+####### betterSolution:
+```JavaScript
+function translate(str) {
+    // Create variables to be used
+    var pigLatin = '';
+    var regex = /[aeiou]/gi;
+    // Check if the first character is a vowel
+    if (str[0].match(regex)) {
+        pigLatin = str + 'way';
+    }
+    else {
+        // Find how many consonants before the firs vowel.
+        var vowelIndice = str.indexOf(str.match(regex)[0]);
+        // Take the string from the first vowel to the last char
+        // then add the consonants that were previously omitted and add the ending.
+        pigLatin = str.substr(vowelIndice) + str.substr(0, vowelIndice) + 'ay';
+    }
+    return pigLatin;
+}
+```
