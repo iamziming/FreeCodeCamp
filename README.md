@@ -55,3 +55,18 @@ function convert(num) {
 
 convert(2450);
 ```
+
+####2. Bonfire: Wherefore art thou
+```JavaScript
+function whatIsInAName(collection, source){
+    var arr = collection.filter(function(item){
+        for(var i in source){
+            if(source[i] != item[i]){
+                return false;
+            }
+        }
+        return true;
+    });
+    return arr;
+}
+```
