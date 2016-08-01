@@ -113,3 +113,31 @@ function translate(str) {
     return pigLatin;
 }
 ```
+
+####4. Bonfire: DNA Pairing
+```JavaScript
+function pairElement(str) {
+    var newArr = str.split("");
+    var final = new Array(newArr.length);
+    for (var i = 0; i < newArr.length; i++) {
+        final[i] = [];
+        if (newArr[i] === "G") {
+            final[i].push("G");
+            final[i].push("C");
+        }
+        else if (newArr[i] === "C") {
+            final[i].push("C");
+            final[i].push("G");
+        }
+        else if (newArr[i] === "A") {
+            final[i].push("A");
+            final[i].push("T");
+        }
+        else if (newArr[i] === "T") {
+            final[i].push("T");
+            final[i].push("A");
+        }
+    }
+    return final;
+}
+```
