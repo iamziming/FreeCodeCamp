@@ -7,7 +7,7 @@ function convertToRoman(num) {
     
     var newArr = [];
     var arr = num.toString().split("");
-    //convert the given number into string
+    // convert the given number into string
     var zero = "0";
     
     var n = ["3000", "2000", "1000", "900", "800", "700", "600", "500", "400", "300", "200", "100", "90", "80", "70", "60", "50", "40", "30", "20", "10", "9", "8", "7", "6", "5", "4", "3", "2", "1"];
@@ -15,8 +15,8 @@ function convertToRoman(num) {
 
     for(var i = 0; i < arr.length; i++){
         arr[i] = arr[i] + zero.repeat(arr.length - i - 1);
-        //loop through the array, add specific number of "0" in place
-        //e.g. ["1", "0", "2", "3"] would be ["1000", "000", "20", "3"]
+        // loop through the array, add specific number of "0" in place
+        // e.g. ["1", "0", "2", "3"] would be ["1000", "000", "20", "3"]
         for(var j = 0; j < n.length; j++){
             if(n[j] === arr[i]){
     		      newArr.push(r[j]);
@@ -77,15 +77,15 @@ function whatIsInAName(collection, source){
 function translatePigLatin(str) {
     var newStr = "";
     var position = str.search(/[aeiou]/);
-    //search for the first vowel and return its position
+    // search for the first vowel and return its position
     if (str[0] === "a" || str[0] === "e" || str[0] === "i" || str[0] === "o" || str[0] === "u") {
         newStr = str + "way";
     }
     else {
         var head = str.substring(0, position);
-        //chop of whatever preceding the vowel
+        // chop of whatever preceding the vowel
         var body = str.slice(position);
-        //keep the rest after head is being chopped off
+        // keep the rest after head is being chopped off
         newStr = body + head + "ay";
     }
     return newStr;
@@ -140,4 +140,20 @@ function pairElement(str) {
     }
     return final;
 }
+```
+####4. Bonfire: Missing letters
+```JavaScript
+function fearNotLetter(str) {
+    // loop through string
+    for (var i = 1; i < str.length - 1; i++) {
+        // check whether all letter have consequential unicode values
+        if ((str.charCodeAt([i + 1]) - str.charCodeAt([i])) != 1) {
+            // if there are any gaps, return missing letter
+            return String.fromCharCode(str.charCodeAt([i]) + 1);
+        }
+    }
+    // else continue until the function returns undefined;
+    return undefined;
+}
+fearNotLetter('abce');
 ```
