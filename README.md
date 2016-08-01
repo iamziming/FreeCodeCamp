@@ -157,3 +157,23 @@ function fearNotLetter(str) {
 }
 fearNotLetter('abce');
 ```
+
+####4. Bonfire: Sorted Union
+```JavaScript
+function unite(arr1, arr2, arr3) {
+    var finalArray = [];
+    // Loop through the arguments object
+    for (var i = 0; i < arguments.length; i++) {
+        var arrayArguments = arguments[i];
+        // Loops through the array at hand
+        for (var j = 0; j < arrayArguments.length; j++) {
+            var indexValue = arrayArguments[j];
+            // Checks if the value is already on the final array.
+            if (finalArray.indexOf(indexValue) < 0) {
+                finalArray.push(indexValue);
+            }
+        }
+    }
+    return finalArray;
+}
+```
