@@ -177,3 +177,32 @@ function uniteUnique(arr) {
 }
 uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
 ```
+
+####5. Bonfire: Convert HTML Entities
+```JavaScript
+function convertHTML(str) {
+    var splittedStr = str.split("");
+    for (var i = 0; i < splittedStr.length; i++) {
+        switch (splittedStr[i]) {
+        case "<":
+            splittedStr[i] = "&lt;";
+            break;
+        case ">":
+            splittedStr[i] = "&gt;";
+            break;
+        case "&":
+            splittedStr[i] = "&amp;";
+            break;
+        case '"':
+            splittedStr[i] = "&quot;";
+            break;
+        case "'":
+            splittedStr[i] = "&apos;";
+            break;
+        }
+    }
+    splittedStr = splittedStr.join("");
+    return splittedStr;
+}
+convertHTML("Dolce & Gabbana");
+```
