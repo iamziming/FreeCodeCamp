@@ -206,3 +206,15 @@ function convertHTML(str) {
 }
 convertHTML("Dolce & Gabbana");
 ```
+
+####6. Bonfire: Spinal Tap Case
+```JavaScript
+function spinalCase(str) {
+    str = str.replace(/([a-z])([A-Z])/g, "$1 $2");
+    // $n represents the nth match
+    // replace everything follows this pattern aA with a space between each occurrence;
+    return str.replace(/\s|_/g, "-").toLowerCase();
+    // replace space or underscore with dash
+}
+spinalCase('The_Andy_Griffith_Show');
+```
