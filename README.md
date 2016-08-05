@@ -218,3 +218,22 @@ function spinalCase(str) {
 }
 spinalCase('The_Andy_Griffith_Show');
 ```
+
+####7. Bonfire: Sum All Odd Fibonacci Numbers
+```JavaScript
+function sumFibs(num) {
+    var preNumber = 0;
+    var curNumber = 1;
+    var sum = 0;
+    while (curNumber <= num) {
+        if (curNumber % 2 !== 0) {
+            sum += curNumber;
+        }
+        var added = preNumber + curNumber;
+        preNumber = curNumber;
+        curNumber = added;
+    }
+    return sum;
+}
+sumFibs(4);
+```
