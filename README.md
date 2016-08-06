@@ -230,3 +230,27 @@ function sumFibs(num) {
 }
 sumFibs(4);
 ```
+####7. Bonfire: Sum All Primes
+```JavaScript
+function sumPrimes(num) {
+    var primes = [];
+    var total = 0;
+    for (var i = 2; i <= num; i++) {
+        var isPrime = true;
+        // Determine if i is actually a prime by dividing it by every number from 2 to i
+        for (var j = 2; j < i; j++) {
+            if (i % j === 0) {
+                isPrime = false;
+            }
+        }
+        if (isPrime) {
+            primes.push(i);
+        }
+    }
+    total = primes.reduce(function (a, b) {
+        return a + b;
+    });
+    return total;
+}
+sumPrimes(977);
+```
