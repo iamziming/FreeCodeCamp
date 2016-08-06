@@ -281,3 +281,20 @@ function smallestCommons(arr) {
 }
 smallestCommons([23, 18]);
 ```
+
+####8. Bonfire: Finders Keepers
+```JavaScript
+function findElement(arr, func) {
+    var num = 0;
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i] % 2 === 0) {
+            num += arr[i];
+            break;
+        }
+    }
+    if (num === 0) {
+        return undefined;
+    }
+    else return num;
+}
+```
