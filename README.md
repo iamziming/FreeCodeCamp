@@ -345,3 +345,15 @@ function binaryAgent(str) {
     return final;
 }
 ```
+
+####12. Everything Be True
+```JavaScript
+function truthCheck(collection, pre) {
+    for (var i = 0; i < collection.length; i++) {
+        if (!collection[i][pre]) return false;
+        // check given array of objects and see if the given property is falsy
+        // if the property doesn’t exist or the property equals zero or null return false;
+    }
+    return true;
+}
+```
