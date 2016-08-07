@@ -1,4 +1,5 @@
-# FreeCodeCamp Solutions
+# FreeCodeCamp
+# Intermediate Algorithm Scripting Solutions
 
 ####1. Bonfire: Roman Numeral Converter
 ####### mySolution:
