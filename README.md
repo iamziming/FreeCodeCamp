@@ -331,3 +331,16 @@ function steamrollArray(arr) {
 }
 steamrollArray([1, [2], [3, [[4]]]]);
 ```
+
+####11. Binary Agents
+```JavaScript
+function binaryAgent(str) {
+    str = str.split(" ");
+    var final = [];
+    for (var i = 0; i < str.length; i++) {
+        final.push(String.fromCharCode(parseInt(str[i], 2)));
+    }
+    final = final.join("");
+    return final;
+}
+```
