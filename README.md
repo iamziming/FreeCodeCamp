@@ -357,3 +357,22 @@ function truthCheck(collection, pre) {
     return true;
 }
 ```
+
+####13. Arguments Optional
+```JavaScript
+function addTogether() {
+    if (arguments.length === 1 && typeof arguments[0] === 'number') {
+        var y = arguments[0];
+        return function sumTwoAnd(x) {
+            if (typeof x === 'number') {
+                return y + x;
+            }
+            else {
+                return undefined;
+            }
+        };
+    }else if (typeof arguments[0] === 'number' && typeof arguments[1] === 'number') {
+        return arguments[0] + arguments[1];
+    }
+}
+```
