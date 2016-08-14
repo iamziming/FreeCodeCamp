@@ -103,3 +103,34 @@ function checkCashRegister(price, cash, cid) {
     }
 }
 ```
+
+####4. Inventory Update
+```JavaScript
+function updateInventory(arr1, arr2) {
+    var found = false;
+    for (j = 0; j < arr2.length; j++) {
+        found = false;
+        for (i = 0; i < arr1.length; i++) {
+            if (arr2[j][1] == arr1[i][1]) {
+                arr1[i][0] += arr2[j][0];
+                found = true;
+            }
+        }
+        if (found === false) {
+            arr1.push(arr2[j]);
+        }
+    }
+    arr1.sort(function (a, b) {
+        if (a[1] < b[1]) {
+            return -1;
+        }
+        else if (a[1] > b[1]) {
+            return 1;
+        }
+    });
+    return arr1;
+}
+var curInv = [[21, "Bowling Ball"], [2, "Dirty Sock"], [1, "Hair Pin"], [5, "Microphone"]];
+var newInv = [[2, "Hair Pin"], [3, "Half-Eaten Apple"], [67, "Bowling Ball"], [7, "Toothpaste"]];
+updateInventory(curInv, newInv);
+```
