@@ -134,3 +134,32 @@ var curInv = [[21, "Bowling Ball"], [2, "Dirty Sock"], [1, "Hair Pin"], [5, "Mic
 var newInv = [[2, "Hair Pin"], [3, "Half-Eaten Apple"], [67, "Bowling Ball"], [7, "Toothpaste"]];
 updateInventory(curInv, newInv);
 ```
+
+####5. No repeats please
+```JavaScript
+function permAlone(str) {
+    var permutations = []
+        , nextWord = []
+        , chars = [];
+    if (typeof str === 'string') chars = str.split('');
+    permutate(chars);
+
+    function permutate(chars) {
+        if (chars.length === 0) {
+            permutations.push(nextWord.join(''));
+        }
+        for (var i = 0; i < chars.length; i++) {
+            chars.push(chars.shift());
+            nextWord.push(chars[0]);
+            permutate(chars.slice(1));
+            nextWord.pop();
+        }
+    }
+    var regex = /(.)\1/g;
+    var filtered = permutations.filter(function (string) {
+        return !string.match(regex);
+    });
+    return filtered.length;
+}
+permAlone('abc');
+```
