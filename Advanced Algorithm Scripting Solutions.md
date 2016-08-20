@@ -163,3 +163,88 @@ function permAlone(str) {
 }
 permAlone('abc');
 ```
+
+####6. Friendly Date Ranges
+```JavaScript
+function makeFriendlyDates(arr) {
+    var start = new Date(arr[0]), 
+        end = new Date(arr[1]), 
+        currYear = new Date().getUTCFullYear();
+    
+    var startYear = start.getUTCFullYear(), 
+        startMonth = start.getUTCMonth(), 
+        startDay = start.getUTCDate(), 
+        endYear = end.getUTCFullYear(), 
+        endMonth = end.getUTCMonth(), 
+        endDay = end.getUTCDate();
+    
+    var months = ["January", "February", "March", "April", "May", "June"
+               , "July", "August", "September", "October", "November", "December"];
+    // check for same date
+    if (start.getTime() === end.getTime()) {
+        if (currYear === startYear) {
+            // Same Date, this year
+            return [months[startMonth] + " " + ordinalize(startDay)];
+        }
+        else {
+            // Same Date, not this year
+            return [months[startMonth] + " " + ordinalize(startDay) + ", " + startYear];
+        }
+    }
+    // check for same month
+    else if (startYear === endYear && startMonth === endMonth) {
+        if (currYear === startYear) {
+            // Same Month, this year
+            return [months[startMonth] + " " + ordinalize(startDay), ordinalize(endDay)];
+        }
+        else {
+            // Same Month, not this year
+            return [months[startMonth] + " " + ordinalize(startDay) + ", " + startYear, ordinalize(endDay)];
+        }
+    }
+    // check for same year
+    else if (sameYear(start, end)) {
+        if (currYear === startYear) {
+            // Start Date in this year, end date less than 1 year away
+            return [months[startMonth] + " " + ordinalize(startDay), months[endMonth] + " " + ordinalize(endDay)];
+        }
+        else {
+            // Dates fall within same year. Start Date is NOT in this year
+            return [months[startMonth] + " " + ordinalize(startDay) + ", " + startYear, months[endMonth] + " " + ordinalize(endDay)];
+        }
+    }
+    // does not meet any of the above conditions
+    else {
+        // display both full dates
+        return [months[startMonth] + " " + ordinalize(startDay) + ", " + startYear, months[endMonth] + " " + ordinalize(endDay) + ", " + endYear];
+    }
+    // sameYear returns true if the date objects are less than one year apart, otherwise returns false
+    function sameYear(d1, d2) {
+        var years = d2.getUTCFullYear() - d1.getUTCFullYear();
+        var origYear = d1.getUTCFullYear();
+        d1.setUTCFullYear(d2.getUTCFullYear());
+        if (d2 < d1) years--;
+        d1.setUTCFullYear(origYear);
+        if (years < 1) return true;
+        return false;
+    }
+    // ordinalize returns a formatted day string
+    function ordinalize(n) {
+        switch (n) {
+        case 1:
+        case 21:
+        case 31:
+            return n + 'st';
+        case 2:
+        case 22:
+            return n + 'nd';
+        case 3:
+        case 23:
+            return n + 'rd';
+        default:
+            return n + 'th';
+        }
+    }
+}
+makeFriendlyDates(['2016-07-01', '2016-07-04']);
+```
