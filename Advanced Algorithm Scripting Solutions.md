@@ -292,3 +292,21 @@ function orbitalPeriod(arr) {
 }
 orbitalPeriod([{name: "sputnik", avgAlt: 35873.5553}]);
 ```
+
+####9. Pairwise
+```JavaScript
+function pairwise(arr, arg) {
+    var sum = 0;
+    var copyArr = arr.slice();
+    for (var i = 0; i < copyArr.length; i++) {
+        for (j = i + 1; j < copyArr.length; j++) {
+            if (copyArr[i] + copyArr[j] == arg) {
+                sum += i + j;
+                copyArr[i] = copyArr[j] = NaN;
+            }
+        }
+    }
+    return sum;
+}
+pairwise([1, 4, 2, 3, 0, 5], 7);
+```
